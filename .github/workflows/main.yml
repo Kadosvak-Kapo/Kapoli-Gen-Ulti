@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'KGU_json.json'
+  workflow_dispatch: # This adds a manual "Run Workflow" button
 
 jobs:
   build-video:
