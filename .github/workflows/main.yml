@@ -3,7 +3,7 @@ name: Generate AI Video
 on:
   push:
     paths:
-      - 'video_script.json'
+      - 'KGU_json.json'
 
 jobs:
   build-video:
