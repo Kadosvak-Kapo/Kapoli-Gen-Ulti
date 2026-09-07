@@ -1,1 +1,28 @@
-KGU_json
+{
+  "metadata": {
+    "title": "My Prime Generator",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "scenes": [
+    {
+      "duration": 4,
+      "text": "STOP PAYING FOR AI VIDEOS",
+      "bgColor": "black",
+      "textColor": "white"
+    },
+    {
+      "duration": 5,
+      "text": "GENERATE THEM ON GITHUB FOR FREE",
+      "bgColor": "darkblue",
+      "textColor": "white"
+    },
+    {
+      "duration": 3,
+      "text": "WELCOME TO THE FUTURE",
+      "bgColor": "darkred",
+      "textColor": "white"
+    }
+  ]
+}
