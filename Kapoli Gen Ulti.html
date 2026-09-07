@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Video Generator Dashboard</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; padding: 40px; text-align: center; }
+    .container { max-width: 900px; margin: 0 auto; display: flex; gap: 30px; justify-content: center; align-items: flex-start; flex-wrap: wrap;}
+    .box { background: #161b22; padding: 20px; border-radius: 12px; border: 1px solid #30363d; flex: 1; min-width: 300px; text-align: left; }
+    h1 { color: #58a6ff; margin-bottom: 5px; }
+    video { width: 100%; max-width: 350px; border-radius: 8px; border: 2px solid #58a6ff; box-shadow: 0px 10px 30px rgba(88, 166, 255, 0.2); }
+    pre { background: #010409; padding: 15px; border-radius: 6px; overflow-x: auto; color: #79c0ff; font-size: 14px; }
+    .status { padding: 10px; background: #238636; color: white; border-radius: 5px; display: inline-block; margin-bottom: 20px; font-weight: bold;}
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Open Source Cloud Video Generator</h1>
+  <p class="status">Live Status: Connected to GitHub Engine</p>
+
+  <div class="container">
+    <!-- Video Player -->
+    <div class="box" style="text-align: center;">
+      <h2>Latest Rendered Video</h2>
+      <!-- The browser caches video, so we add a random number to the URL to always fetch the newest version -->
+      <video id="myVideo" controls autoplay loop muted></video>
+      <p style="color: #8b949e; font-size: 14px;">To make a new video, edit <b>video_script.json</b> in your repo.</p>
+    </div>
+
+    <!-- JSON Script Viewer -->
+    <div class="box">
+      <h2>Current JSON Blueprint</h2>
+      <pre id="jsonViewer">Loading...</pre>
+    </div>
+  </div>
+
+  <script>
+    // Prevent browser caching so you always see the newest video
+    document.getElementById('myVideo').src = "output.mp4?v=" + new Date().getTime();
+
+    // Fetch and display the current JSON script
+    fetch('video_script.json?v=' + new Date().getTime())
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('jsonViewer').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => document.getElementById('jsonViewer').textContent = "Error loading JSON.");
+  </script>
+
+</body>
+</html>
