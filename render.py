@@ -2,7 +2,7 @@ import json
 import os
 import subprocess
 
-# 1. Load the JSON Blueprint
+# Line 6 should look like this:
 with open('KGU_json.json', 'r') as f:
     data = json.load(f)
 
